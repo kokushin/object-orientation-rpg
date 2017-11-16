@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>object-orientation-rpg</title>
+</head>
+<body>
+  <div id="player"></div>
+  <hr>
+  <div id="mob"></div>
+  <hr>
+  <ul id="log"></ul>
+
+  <script src="./character.js"></script>
+  <script src="./system.js"></script>
+  <script>
+    const player = new Character({
+      name: '勇者',
+      type: 'player',
+      lv: 1,
+      exp: 0,
+      hp: 100,
+      mp: 30,
+      skills: [
+        {
+          name: 'スラッシュ',
+          type: 'attack',
+          target: 'hp',
+          mp: 0,
+          power: {
+            min: 1,
+            max: 3
+          }
+        },
+        {
+          name: 'ガード',
+          type: 'defense',
+          target: 'hp',
+          mp: 0,
+          power: {
+            min: 1,
+            max: 3
+          }
+        },
+        {
+          name: 'ヒール',
+          type: 'recovery',
+          target: 'hp',
+          mp: 3,
+          power: {
+            min: 1,
+            max: 3
+          }
+        },
+        {
+          name: 'ギガスラッシュ',
+          type: 'spAttack',
+          target: 'hp',
+          mp: 10,
+          power: {
+            min: 10,
+            max: 30
+          }
+        }
+      ]
+    })
+
+    const mob = new Character({
+      name: '凶暴なオーク',
+      type: 'mob',
+      lv: 5,
+      exp: 200,
+      hp: 180,
+      mp: 50,
+      skills: [
+        {
+          name: '殴る',
+          type: 'attack',
+          target: 'hp',
+          mp: 2,
+          power: {
+            min: 2,
+            max: 5
+          }
+        },
+        {
+          name: 'ガード',
+          type: 'defense',
+          target: 'hp',
+          mp: 0,
+          power: {
+            min: 1,
+            max: 3
+          }
+        }
+      ]
+    })
+
+    const system = new System(player, mob)
+  </script>
+</body>
+</html>
